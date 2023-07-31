@@ -1,15 +1,31 @@
-Source: template-repository
-Section: unknown
+Source: golang-github-tidwall-pretty
+Section: devel
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Andreas Henriksson <andreas@fatal.se>
+Build-Depends: debhelper-compat (= 12),
+               dh-golang,
+               golang-any,
+Standards-Version: 4.2.1
+Homepage: https://github.com/tidwall/pretty
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-tidwall-pretty
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-tidwall-pretty.git
+XS-Go-Import-Path: github.com/tidwall/pretty
+Testsuite: autopkgtest-pkg-go
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: golang-github-tidwall-pretty-dev
+Architecture: all
+Depends: ${misc:Depends},
+Multi-Arch: foreign
+Description: Efficient JSON beautifier and compactor for Go
+ Pretty is a Go package that provides fast methods for formatting JSON for
+ human readability, or to compact JSON for smaller payloads.
+ .
+  * pretty.Pretty will reformat the JSON for readability.
+  * pretty.Color will add color to the result for printing to the terminal.
+    The second param is used for a customizing the style, and passing nil will
+    use the default pretty.TerminalStyle.
+  * pretty.Ugly will reformat the JSON to make it more compact.
+ .
+ There's a PrettyOptions(json, opts) function which allows for customizing the
+ output.
